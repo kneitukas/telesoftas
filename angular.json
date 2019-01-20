@@ -135,5 +135,8 @@
       }
     }
   },
-  "defaultProject": "Telesoftas"
+  "defaultProject": "Telesoftas",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
