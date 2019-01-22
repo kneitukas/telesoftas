@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { StoreService } from '../store/store.service';
 
 @Component({

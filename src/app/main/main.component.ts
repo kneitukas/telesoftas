@@ -1,18 +1,16 @@
-import {
-  Component,
-  OnInit,
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { StoreService } from './store/store.service';
+import { StoreService } from '../store/store.service';
 import { Store } from '@ngrx/store';
-import { AppState } from './reducers';
+import { AppState } from '../reducers';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-main',
+  templateUrl: './main.component.html',
+  styleUrls: ['./main.component.scss']
 })
-export class AppComponent implements OnInit {
+export class MainComponent implements OnInit {
+
   articles;
   form: FormGroup;
 
@@ -36,3 +34,5 @@ export class AppComponent implements OnInit {
     this.store.addLike(article);
   }
 }
+
+

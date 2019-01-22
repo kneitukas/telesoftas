@@ -15,7 +15,9 @@ export class StoreService {
     this.users = [
       new UserModel('Tomas'),
       new UserModel('Dainius'),
-      new UserModel('Agne')
+      new UserModel('Agne'),
+      new UserModel('Andrius'),
+      new UserModel('Kestas'),
     ];
     this.logIn('Tomas');
   }
@@ -27,7 +29,6 @@ export class StoreService {
 
     this.currentUser = filtered[0];
     this.currentUser.isLoggedIn = true;
-    console.log(this.currentUser)
   }
 
   addArticle(article) {
@@ -38,7 +39,6 @@ export class StoreService {
       new Article(this.id, article, this.currentUser.username)
     );
     this.id++;
-    console.log(this.articles);
   }
 
   addLike(article) {

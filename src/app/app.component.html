@@ -1,36 +1,6 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
+<router-outlet></router-outlet>
 
-<app-user-list></app-user-list>
-<div class='container'>
 
-  <table>
-    <thead>
-      <tr class='description'>
-        <th class='suggest'>Suggestion</th>
-        <th class='likes'>Likes</th>
-      </tr>
-    </thead>
-    <tbody>
-      <ng-container *ngFor='let article of articles; let even = even'>
-          <tr [ngClass]= "even ? 'even': 'odd'" >
-              <td class='article'>
-                {{article.description}}
-                <p class='author'>Author: {{article.author}}</p>
-                </td>
-              <td class='btn' type='button' (click)='addLike(article)'>
-                  <p>{{article.likes}}</p>
-                  <img id='svg' src=".../../../assets/like.svg" >
-              </td>
-            </tr>
-      </ng-container>
-
-    </tbody>
-  </table>
-
-  <form [formGroup]='form' (ngSubmit)='addArticle(form.value)' >
-    <input formControlName="article" type="text" placeholder="Add new suggestion" #inp>
-    <button [disabled]="!inp.value">Add</button>
-  </form>
-</div>
 
