@@ -11,14 +11,16 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { MainComponent } from './main/main.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
+import { AuthModule } from './auth/auth.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserListComponent,
-    MainComponent
   ],
   imports: [
+    AuthModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,

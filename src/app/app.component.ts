@@ -4,8 +4,10 @@ import {
 } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { StoreService } from './store/store.service';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
+import { map } from 'rxjs/operators';
 import { AppState } from './reducers';
+import { selectAuthState } from './auth/auth.selectors';
 
 @Component({
   selector: 'app-root',
@@ -18,13 +20,21 @@ export class AppComponent implements OnInit {
 
   constructor(private store: StoreService, private ngStore: Store<AppState>) {
     this.articles = store.articles;
-    ngStore.subscribe();
   }
 
   ngOnInit() {
     this.form = new FormGroup({
       article: new FormControl()
     });
+
+    this.ngStore
+    .pipe(
+      // map(state => state.auth.loggedIn)
+      select(selectAuthState)
+    ).subscribe(
+      loggedIn => console.log(loggedIn)
+    );
+
   }
 
   addArticle(val) {

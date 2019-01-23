@@ -1,5 +1,5 @@
 <app-user-list></app-user-list>
-
+<button (click)='logout()'>Logout</button>
 <div class='container'>
   <table>
     <thead>
@@ -27,6 +27,6 @@
 
   <form [formGroup]='form' (ngSubmit)='addArticle(form.value)' >
     <input formControlName="article" type="text" placeholder="Add new suggestion" #inp>
-    <button [disabled]="!inp.value">Add</button>
+    <button class='submit' [disabled]="!inp.value">Add</button>
   </form>
 </div>

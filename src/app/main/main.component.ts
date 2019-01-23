@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { StoreService } from '../store/store.service';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { AppState } from '../reducers';
+import { Logout } from '../auth/auth.actions';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { isLoggedIn } from '../auth/auth.selectors';
 
 @Component({
   selector: 'app-main',
@@ -10,19 +14,23 @@ import { AppState } from '../reducers';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-
+  isloggedIn$: Observable<boolean>;
   articles;
   form: FormGroup;
 
-  constructor(private store: StoreService, private ngStore: Store<AppState>) {
+  constructor(private store: StoreService, private ngStore: Store<AppState>, private router: Router) {
     this.articles = store.articles;
-    ngStore.subscribe();
   }
 
   ngOnInit() {
     this.form = new FormGroup({
       article: new FormControl()
     });
+
+   this.isloggedIn$ = this.ngStore
+    .pipe(
+      select(isLoggedIn)
+    );
   }
 
   addArticle(val) {
@@ -32,6 +40,11 @@ export class MainComponent implements OnInit {
 
   addLike(article) {
     this.store.addLike(article);
+  }
+
+  logout() {
+    this.ngStore.dispatch(new Logout());
+    this.router.navigateByUrl('/');
   }
 }
 

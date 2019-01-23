@@ -1,11 +1,5 @@
 <form class='form' [formGroup] ='form' (ngSubmit)='submit(form.value)'>
-  <label for="name">
-    Name
-  </label>
-  <input type="text" formControlName='name' >
-  <label for="name">
-      Password
-    </label>
-  <input type="password" formControlName='password'>
+  <input type="text" formControlName='name' autocomplete="name" placeholder="name">
+  <input type="password" formControlName='password' autocomplete="current-password" placeholder="password">
   <button>Login</button>
 </form>

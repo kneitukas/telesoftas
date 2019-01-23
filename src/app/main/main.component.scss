@@ -43,13 +43,11 @@ input {
 }
 
 button {
-  width: 20%;
   font-size: 24px;
   background-color:#5C7EBD;
   color: white;
   cursor: pointer;
   user-select: none;
-  // border: none;
 
   &:active {
     background-color: #5974A9;
@@ -58,6 +56,10 @@ button {
   &:hover {
     background-color:#7796CE;
   }
+}
+
+.submit {
+  width: 20%;
 }
 
 .btn {
