@@ -5,8 +5,11 @@ import { Store, select } from '@ngrx/store';
 import { AppState } from '../reducers';
 import { Logout } from '../auth/auth.actions';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, fromEvent, from } from 'rxjs';
 import { isLoggedIn } from '../auth/auth.selectors';
+import { LoadArticles } from './main/main.actions';
+import { map } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-main',
@@ -20,12 +23,14 @@ export class MainComponent implements OnInit {
 
   constructor(private store: StoreService, private ngStore: Store<AppState>, private router: Router) {
     this.articles = store.articles;
+    // this.articles$ = ngStore.pipe(select( ));
   }
 
   ngOnInit() {
     this.form = new FormGroup({
       article: new FormControl()
     });
+    this.ngStore.dispatch(new LoadArticles());
 
    this.isloggedIn$ = this.ngStore
     .pipe(
@@ -47,5 +52,30 @@ export class MainComponent implements OnInit {
     this.router.navigateByUrl('/');
   }
 }
+
+let calls = "";
+
+function jerry(str) {
+	str = 'Jerry'
+  return kramer(str)
+}
+
+function george(str) {
+	str += 'George'
+  return elaine(str)
+}
+
+function elaine(str) {
+	return str += 'Elaine'
+}
+
+function kramer(str) {
+  str += 'Kramer'
+ return george(str)
+}
+
+
+// should return: 'JerryKramerGeorgeElaine'
+calls = jerry(calls);
 
 

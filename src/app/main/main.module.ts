@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MainComponent } from './main.component';
 import { UserListComponent } from '../user-list/user-list.component';
 import { Routes, RouterModule } from '@angular/router';
+import { StoreModule } from '@ngrx/store';
+import * as fromMain from './main/main.reducer';
 
 const routes: Routes = [
   {path: '', component: MainComponent}
@@ -18,7 +20,8 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    StoreModule.forFeature('main', fromMain.reducer)
   ],
 })
 

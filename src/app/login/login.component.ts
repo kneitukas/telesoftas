@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { AuthState } from '../auth/auth.reducer';
 
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -24,18 +25,22 @@ export class LoginComponent implements OnInit {
       password: new FormControl()
   });
   }
-submit(form) {
-  this.auth.login(form.name, form.password)
-  .pipe(
-    tap( user => {
-      this.store.dispatch(new Login(user));
-      this.router.navigateByUrl('/main');
-    })
-  ).subscribe(
-    (user) => {
-    },
-    (err) => console.log(err)
-  );
+// submit(form) {
+//   this.auth.login(form.name, form.password)
+//   .pipe(
+//     tap( user => {
+//       this.store.dispatch(new Login(user));
+//       this.router.navigateByUrl('/main');
+//     })
+//   ).subscribe(
+//     (user) => {
+//     },
+//     (err) => console.log(err)
+//   );
 
+// }
+
+submit() {
+  this.auth.login();
 }
 }

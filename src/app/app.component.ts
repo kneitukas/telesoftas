@@ -5,9 +5,11 @@ import {
 import { FormGroup, FormControl } from '@angular/forms';
 import { StoreService } from './store/store.service';
 import { Store, select } from '@ngrx/store';
-import { map } from 'rxjs/operators';
+import { delay } from 'rxjs/operators';
 import { AppState } from './reducers';
 import { selectAuthState } from './auth/auth.selectors';
+import { of, range, concat } from 'rxjs';
+
 
 @Component({
   selector: 'app-root',
@@ -15,6 +17,7 @@ import { selectAuthState } from './auth/auth.selectors';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+
   articles;
   form: FormGroup;
 
@@ -46,3 +49,6 @@ export class AppComponent implements OnInit {
     this.store.addLike(article);
   }
 }
+
+
+
